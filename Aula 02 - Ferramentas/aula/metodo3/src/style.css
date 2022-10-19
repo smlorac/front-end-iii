@@ -1,0 +1,15 @@
+h1 {
+    font-style: italic;
+    background-color: papayawhip;
+    width: fit-content;
+}
+
+.texto {
+    color: crimson;
+    background-color: aquamarine;
+    width: max-content;
+}
+
+img {
+    width: 300px;
+}
