@@ -1,0 +1,13 @@
+h1 {
+    width: 200px;
+}
+
+#botaozinho {
+    border-radius: 10px;
+    background-color: plum;
+}
+
+* {
+    background-color: antiquewhite;
+    margin: 0 auto;
+}
