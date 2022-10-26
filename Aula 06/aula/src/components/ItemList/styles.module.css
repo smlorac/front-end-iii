@@ -1,0 +1,5 @@
+/* colocamos o module pq senao daria conflito com o styles do src */
+
+.item_list {
+    background: red;
+}
