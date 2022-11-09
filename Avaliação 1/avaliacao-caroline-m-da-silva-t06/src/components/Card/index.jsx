@@ -1,8 +1,11 @@
 const Card = (props) => {
+
+  //console.log(props);
   return (
     <div>
-      <h1>{props.nome}</h1>
-      <h2>{props.casa}</h2>
+      <h2>{props.nome}</h2>
+      <h3>{props.casa}</h3>
+      <img src={props.url} alt={props.nome} />
     </div>
   )
 };
