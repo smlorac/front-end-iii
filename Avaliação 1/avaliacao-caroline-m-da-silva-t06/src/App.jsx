@@ -1,63 +1,126 @@
 import { useState } from "react";
 import Card from "./components/Card";
+import Erro from "./components/Erro";
 import "./App.css";
 
 const App = () => {
   const [inputs, setInputs] = useState({ nome: "", casa: "", url: "" });
 
-  const [errors, setErrors] = useState([]);
+  const [cards, setCards] = useState([
+    { nome: "", casa: "", url: "", cor: "" },
+  ]);
 
-  const [cards, setCards] = useState([{ nome: "", casa: "", url: "" }]);
+  const [cardErros, setCardsErros] = useState([
+    { errosNome: "", errosCasa: "" },
+  ]);
 
-  let arrayErrors = [];
+  const reset = () => {
+    setInputs({ nome: "", casa: "", url: "" });
+    setCardsErros([]);
+  };
 
   const submit = (event) => {
     event.preventDefault();
     // console.log(inputs);
 
     // console.log(inputs.nome)
+    // console.log(cardErros);
 
     if (inputs.nome.length < 3) {
-      arrayErrors.push("O nome deve ter, no mínimo, 3 caracteres");
-      setErrors(...errors, arrayErrors);
+      setCardsErros([
+        ...cardErros,
+        {
+          errosNome: "O nome deve ter, no mínimo, 3 caracteres"
+        },
+      ]);
       return;
     }
 
     if (inputs.nome[0] == " ") {
-      arrayErrors.push("O nome não pode começar com espaço em branco");
-      setErrors(...errors, arrayErrors);
+      setCardsErros([
+        ...cardErros,
+        {
+          errosNome: "O nome não pode começar com espaço em branco"
+        },
+      ]);
       return;
     }
 
     if (inputs.casa.length < 6) {
-      arrayErrors.push("A casa deve ter, no mínimo, 6 caracteres");
-      setErrors(...errors, arrayErrors);
+      setCardsErros([
+        ...cardErros,
+        {
+          errosCasa: "A casa deve ter, no mínimo, 6 caracteres"
+        },
+      ]);
       return;
     }
 
-    if (!/\d/.test(inputs.casa)) {
-      arrayErrors.push("A casa deve conter um número");
-      setErrors(...errors, arrayErrors);
+    if (!/\d/.test(inputs.casa.split("")[0])) {
+      setCardsErros([
+        ...cardErros,
+        { errosCasa: "A casa deve começar com um número" },
+      ]);
       return;
     }
-    //console.log(errors);
 
-    setCards([
-      ...cards,
-      { nome: inputs.nome, casa: inputs.casa, url: inputs.url },
-    ]);
+    // console.log(cardErros);
+
+    //console.log(inputs.casa.startsWith("1"));
+
+    if (inputs.casa.startsWith("1")) {
+      setCards([
+        ...cards,
+        {
+          nome: inputs.nome,
+          casa: inputs.casa,
+          url: inputs.url,
+          cor: "maroon",
+        },
+      ]);
+    } else if (inputs.casa.startsWith("2")) {
+      setCards([
+        ...cards,
+        {
+          nome: inputs.nome,
+          casa: inputs.casa,
+          url: inputs.url,
+          cor: "darkGreen",
+        },
+      ]);
+    } else if (inputs.casa.startsWith("3")) {
+      setCards([
+        ...cards,
+        {
+          nome: inputs.nome,
+          casa: inputs.casa,
+          url: inputs.url,
+          cor: "darkBlue",
+        },
+      ]);
+    } else if (inputs.casa.startsWith("4")) {
+      setCards([
+        ...cards,
+        { nome: inputs.nome, casa: inputs.casa, url: inputs.url, cor: "gold" },
+      ]);
+    } else {
+      setCards([
+        ...cards,
+        { nome: inputs.nome, casa: inputs.casa, url: inputs.url },
+      ]);
+    }
 
     setInputs({ ...inputs, nome: "", casa: "", url: "" });
-    setErrors([]);
+    setCardsErros([]);
   };
 
   return (
     <>
       <h1>Formulário de Harry Potter</h1>
       <div id="area">
-        <form onSubmit={submit} id="formulario">
+        <form onSubmit={submit} id="formulario" onReset={reset}>
           <fieldset>
-            <legend>Liste seus personagens favoritos de HP</legend>
+            <legend>Crie cards com seus personagens favoritos de HP</legend>
             <label>Nome do personagem </label>
             <input
               className="nome"
@@ -88,28 +151,31 @@ const App = () => {
                 setInputs({ ...inputs, url: e.target.value });
               }}
             />
-            <input className="btn-submit" type="submit" />
+            <div id="botoes">
+              <input className="btn" type="submit"/>
+              <input type="reset" className="btn" value="Limpar" />
+            </div>
           </fieldset>
         </form>
       </div>
       <div>
-        {errors.map((error, index) => (
-          <p id="erros" key={`error-list-${index}`}>
-            {error}
-          </p>
+        {cardErros.map((cardErro, index) => (
+          <Erro erro={cardErro.errosNome} key={`error-name-list-${index}`} />
+        ))}
+        {cardErros.map((cardErro, index) => (
+          <Erro erro={cardErro.errosCasa} key={`error-house-list-${index}`} />
         ))}
       </div>
       <div className="row">
-        <div className="card">
-          {cards.map((card, index) => (
-            <Card
-              nome={card.nome}
-              casa={card.casa.slice(2)}
-              key={`card-list-${index}`}
-              url={card.url}
-            />
-          ))}
-        </div>
+        {cards.map((card, index) => (
+          <Card
+            nome={card.nome}
+            casa={card.casa.slice(2)}
+            key={`card-list-${index}`}
+            url={card.url}
+            cor={card.cor}
+          />
+        ))}
       </div>
     </>
   );
