@@ -4,7 +4,11 @@ import Erro from "./components/Erro";
 import "./App.css";
 
 const App = () => {
-  const [inputs, setInputs] = useState({ nome: "", casa: "", url: "" });
+  const [inputs, setInputs] = useState({
+    nome: "",
+    casa: "",
+    url: "",
+  });
 
   const [cards, setCards] = useState([
     { nome: "", casa: "", url: "", cor: "" },
@@ -19,6 +23,8 @@ const App = () => {
     setCardsErros([]);
   };
 
+  console.log(inputs);
+
   const submit = (event) => {
     event.preventDefault();
     // console.log(inputs);
@@ -30,7 +36,7 @@ const App = () => {
       setCardsErros([
         ...cardErros,
         {
-          errosNome: "O nome deve ter, no mínimo, 3 caracteres"
+          errosNome: "O nome deve ter, no mínimo, 3 caracteres",
         },
       ]);
       return;
@@ -40,7 +46,7 @@ const App = () => {
       setCardsErros([
         ...cardErros,
         {
-          errosNome: "O nome não pode começar com espaço em branco"
+          errosNome: "O nome não pode começar com espaço em branco",
         },
       ]);
       return;
@@ -50,7 +56,7 @@ const App = () => {
       setCardsErros([
         ...cardErros,
         {
-          errosCasa: "A casa deve ter, no mínimo, 6 caracteres"
+          errosCasa: "A casa deve ter, no mínimo, 6 caracteres",
         },
       ]);
       return;
@@ -59,7 +65,18 @@ const App = () => {
     if (!/\d/.test(inputs.casa.split("")[0])) {
       setCardsErros([
         ...cardErros,
-        { errosCasa: "A casa deve começar com um número" },
+        {
+          errosCasa:
+            "A casa deve começar com um número, conforme o exemplo",
+        },
+      ]);
+      return;
+    }
+
+    if (!(/(^|\W)grifinória($|\W)/i).test(inputs.casa) && !(/(^|\W)sonserina($|\W)/i).test(inputs.casa) && !(/(^|\W)corvinal($|\W)/i).test(inputs.casa) && !(/(^|\W)lufa-lufa($|\W)/i).test(inputs.casa)) {
+      setCardsErros([
+        ...cardErros,
+        { errosCasa: "A casa ser uma das 4 citadas no exemplo" },
       ]);
       return;
     }
@@ -140,6 +157,7 @@ const App = () => {
               value={inputs.casa}
               onChange={(e) => {
                 setInputs({ ...inputs, casa: e.target.value });
+                // console.log(e)
               }}
             />
             <label>URL da imagem do personagem </label>
@@ -152,7 +170,7 @@ const App = () => {
               }}
             />
             <div id="botoes">
-              <input className="btn" type="submit"/>
+              <input className="btn" type="submit" />
               <input type="reset" className="btn" value="Limpar" />
             </div>
           </fieldset>
@@ -167,15 +185,17 @@ const App = () => {
         ))}
       </div>
       <div className="row">
-        {cards.map((card, index) => (
-          <Card
-            nome={card.nome}
-            casa={card.casa.slice(2)}
-            key={`card-list-${index}`}
-            url={card.url}
-            cor={card.cor}
-          />
-        ))}
+        {cards
+          .filter((card) => card.nome != "")
+          .map((card, index) => (
+            <Card
+              nome={card.nome}
+              casa={card.casa.slice(2)}
+              key={`card-list-${index}`}
+              url={card.url}
+              cor={card.cor}
+            />
+          ))}
       </div>
     </>
   );
