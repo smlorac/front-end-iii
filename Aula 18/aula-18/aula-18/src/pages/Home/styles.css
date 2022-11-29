@@ -1,0 +1,23 @@
+.container-item{
+    width: 280px;
+    height: 280px;
+    border: 1px solid #cacaca;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-item img{
+    width: 150px;
+    height: 150px;
+}
+
+.content{
+    display: flex;
+}
+
+a{
+    text-decoration: none;
+}
