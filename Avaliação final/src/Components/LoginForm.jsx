@@ -23,14 +23,13 @@ const LoginForm = () => {
   };
 
   async function auth() {
-    console.log(username)
-    console.log(password)
     try {
+
       const res = await api.post("/auth", {
         username,
-        password,
+        password
       });
-
+        
       navigate("/home");
 
     } catch (e) {
