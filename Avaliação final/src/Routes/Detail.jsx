@@ -5,7 +5,7 @@ const Detail = () => {
     <>
       <DetailCard />
     </>
-  )
-}
+  );
+};
 
-export default Detail
+export default Detail;
