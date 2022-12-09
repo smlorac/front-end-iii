@@ -49,6 +49,11 @@ const Navbar = () => {
                   Login
                 </a>
               </li>
+              <li className={`nav-item ${styles.navBarLink}`}>
+                <a className="nav-link" href="/contato">
+                  Contato
+                </a>
+              </li>
               <li className={`nav-item`}>
                 {/* Ao ser clicado, esse botão mudará a aplicação para dark mode ou light mode.
                  Lembre-se de usar um estado no contexto para fazer essa alteração.

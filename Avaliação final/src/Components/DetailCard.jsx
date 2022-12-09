@@ -21,6 +21,7 @@ const DetailCard = () => {
   }, []);
 
   async function getDentista() {
+    // FIXME erro 403 no navegador e 404 no postman
     try {
       const res = await api.get(`/dentista/${matricula}`, {
         headers: {
