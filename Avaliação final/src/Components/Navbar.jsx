@@ -50,6 +50,11 @@ const Navbar = () => {
                 </a>
               </li>
               <li className={`nav-item ${styles.navBarLink}`}>
+                <a className="nav-link" href="/destacados">
+                  Favoritos
+                </a>
+              </li>
+              <li className={`nav-item ${styles.navBarLink}`}>
                 <a className="nav-link" href="/contato">
                   Contato
                 </a>

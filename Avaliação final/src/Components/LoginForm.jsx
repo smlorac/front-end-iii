@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthContext";
 
+// TODO adicionar validações (2)
 const LoginForm = () => {
   const navigate = useNavigate();
 
@@ -28,7 +29,6 @@ const LoginForm = () => {
 
   async function auth() {
     try {
-
       const res = await api.post("/auth", {
         username,
         password
@@ -54,7 +54,7 @@ const LoginForm = () => {
           <form onSubmit={handleSubmit}>
             <input
               className={`form-control ${styles.inputSpacing}`}
-              placeholder="Login"
+              placeholder="Nome de usuário"
               name="login"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -62,7 +62,7 @@ const LoginForm = () => {
             />
             <input
               className={`form-control ${styles.inputSpacing}`}
-              placeholder="Password"
+              placeholder="Senha"
               name="password"
               type="password"
               value={password}

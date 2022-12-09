@@ -1,5 +1,7 @@
 import styles from "./Card.module.css";
 
+
+// TODO criar modo de lidar com os favoritos
 const Card = (props) => {
   const { dentista } = props;
 
@@ -21,6 +23,14 @@ const Card = (props) => {
               {dentista.nome} {dentista.sobrenome}
             </h5>
           </a>
+          <button style={{ fontSize: "12px" }} value={dentista.matricula}>
+            <img
+              src="/images/star.png"
+              alt="icone de estrela"
+              style={{ width: "30px" }}
+            />
+            Adicionar aos favoritos
+          </button>
         </div>
       </div>
     </>
