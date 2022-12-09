@@ -15,7 +15,6 @@ root.render(
   <React.StrictMode>
     <AuthProvider>
       <Navbar />
-      {/* <Home /> */}
       <AppRoutes />
       <Footer />
     </AuthProvider>

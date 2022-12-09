@@ -3,9 +3,13 @@ import api from "../Services/api";
 import styles from "./Form.module.css";
 
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthContext";
 
 const LoginForm = () => {
   const navigate = useNavigate();
+
+  const {fillUserData} = useContext(AuthContext);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -31,6 +35,10 @@ const LoginForm = () => {
       });
         
       navigate("/home");
+
+      fillUserData({
+        token: res.data.token,
+      })
 
     } catch (e) {
       console.log("erro de autenticação");

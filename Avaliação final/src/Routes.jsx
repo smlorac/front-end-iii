@@ -12,7 +12,7 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dentist/:id" element={<Detail />} />
+        <Route path="/dentist/:matricula" element={<Detail />} />
         <Route path="/contato" element={<Contato />} />
         <Route path="/destacados" element={<Destacados />} />
         {/* TODO adicionar rota para NOT FOUND */}

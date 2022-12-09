@@ -7,14 +7,10 @@ export const AuthContext = createContext({});
 const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState({});
 
-  function fillUserData({ token, tipo }) {
-    localStorage.setItem("@authDentista", JSON.stringify({ token, tipo }));
+  function fillUserData({ token }) {
+    localStorage.setItem("@authDentista", JSON.stringify({ token }));
 
-    setUserData({ ...userData, token, tipo });
-  }
-
-  function emptyUserData() {
-    setUserData({ token: "", tipo: "" });
+    setUserData({ ...userData, token });
   }
 
   useEffect(() => {
@@ -25,12 +21,12 @@ const AuthProvider = ({ children }) => {
     if (res) {
       user = JSON.parse(res);
 
-      fillUserData({ token: user.token, tipo: user.tipo });
+      fillUserData({ token: user.token });
     }
   }, []);
 
   return (
-    <AuthContext.Provider value={{ userData, fillUserData, emptyUserData }}>
+    <AuthContext.Provider value={{ userData, fillUserData }}>
       {children}
     </AuthContext.Provider>
   );
