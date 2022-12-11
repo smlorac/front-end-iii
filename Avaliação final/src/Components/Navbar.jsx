@@ -1,13 +1,22 @@
 import styles from "./Navbar.module.css";
+import { useContext } from "react";
+
+import { ThemeContext } from "../Providers/ThemeProvider";
 
 const Navbar = () => {
+  const { theme, handleTheme } = useContext(ThemeContext);
 
   return (
     <header className="sticky-top">
       {/* //Na linha seguinte deverá ser feito um teste se a aplicação
         // está em dark mode e deverá utilizar navbar-dark bg-dark ou navbar-light bg-light*/}
       <nav
-        className={`navbar navbar-expand-sm navbar-light bg-light`}
+        className={
+          theme === "light"
+            ? `navbar navbar-expand-sm navbar-light bg-light`
+            : `navbar navbar-expand-sm navbar-dark bg-dark`
+        }
+        // className="navbar navbar-expand-sm navbar-light bg-light"
         aria-label="Third navbar example"
       >
         <div className="container">
@@ -39,6 +48,7 @@ const Navbar = () => {
                 </a>
               </li>
               <li className={`nav-item ${styles.navBarLink}`}>
+                {/* TODO botão de logout que limpe o localstorage */}
                 {/* Se o usuário estiver logado, deverá aparecer um botão de logout
                 que vai apagar o token do localstorage.
                 Se o usuário estiver deslogado, um link fará um redirecionamento, com react-router,
@@ -64,11 +74,16 @@ const Navbar = () => {
                  Lembre-se de usar um estado no contexto para fazer essa alteração.
                  Na linha seguinte deverá ser feito um teste se a aplicação
                  está em dark mode e deverá utilizar o icone ☀ ou 🌙 e btn-dark ou btn-light*/}
+                 {/* TODO guardar o tema mesmo quando muda de página */}
                 <button
-                  className={`btn btn-light${styles.btnStyle
-                    }`}
+                  className={
+                    theme === "light"
+                      ? `btn btn-light ${styles.btnStyle}`
+                      : `btn btn-dark ${styles.btnStyle}`
+                  }
+                  onClick={handleTheme}
                 >
-                  ☀ 🌙{" "}
+                  {theme === "light" ? <img src="/images/moon.png" style={{width: "20px"}}/> : <img src="/images/sun.png" style={{width: "20px"}}/>}
                 </button>
               </li>
             </ul>

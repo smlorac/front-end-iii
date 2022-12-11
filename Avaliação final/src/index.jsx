@@ -8,15 +8,19 @@ import "./index.css";
 
 import AppRoutes from "./Routes";
 import AuthProvider from "./Providers/AuthContext";
+import ThemeProvider from "./Providers/ThemeProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 //Lembre-se de configurar suas rotas e seu contexto aqui
 root.render(
   <React.StrictMode>
-    <AuthProvider>
-      <Navbar />
-      <AppRoutes />
-      <Footer />
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <Navbar />
+        <AppRoutes />
+        <Footer />
+      </AuthProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );

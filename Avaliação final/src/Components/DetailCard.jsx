@@ -5,8 +5,12 @@ import { useParams } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthContext";
 
 import api from "../Services/api";
+import { ThemeContext } from "../Providers/ThemeProvider";
 
 const DetailCard = () => {
+
+  const {theme} = useContext(ThemeContext);
+
   const { matricula } = useParams();
   const [dentista, setDentista] = useState({});
 
@@ -21,9 +25,8 @@ const DetailCard = () => {
   }, []);
 
   async function getDentista() {
-    // FIXME erro 403 no navegador e 404 no postman
     try {
-      const res = await api.get(`/dentista/${matricula}`, {
+      const res = await api.get(`/dentista?matricula=${matricula}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -46,7 +49,7 @@ const DetailCard = () => {
       <section className="card col-sm-12 col-lg-6 container">
         {/* //Na linha seguinte deverá ser feito um teste se a aplicação
         // está em dark mode e deverá utilizar o css correto */}
-        <div className={`card-body row`}>
+        <div className={theme === "light" ? `card-body row` : `dark row`}>
           <div className="col-sm-12 col-lg-6">
             <img
               className="card-img-top"
@@ -70,7 +73,7 @@ const DetailCard = () => {
               <button
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
-                className={`btn btn-light ${styles.button}`}
+                className={theme === "light" ? `btn btn-light ${styles.button}` : `btn btn-dark ${styles.button}`}
               >
                 Marcar consulta
               </button>
