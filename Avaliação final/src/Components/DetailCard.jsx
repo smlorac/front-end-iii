@@ -15,7 +15,6 @@ const DetailCard = () => {
   const [dentista, setDentista] = useState({});
 
   const { userData } = useContext(AuthContext);
-
   const { token } = userData;
 
   useEffect(() => {
@@ -49,7 +48,7 @@ const DetailCard = () => {
       <section className="card col-sm-12 col-lg-6 container">
         {/* //Na linha seguinte deverá ser feito um teste se a aplicação
         // está em dark mode e deverá utilizar o css correto */}
-        <div className={theme === "light" ? `card-body row` : `dark row`}>
+        <div className={theme === "light" ? `card-body row` : `card-body dark row`}>
           <div className="col-sm-12 col-lg-6">
             <img
               className="card-img-top"

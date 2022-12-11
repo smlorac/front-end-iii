@@ -16,7 +16,6 @@ const Navbar = () => {
             ? `navbar navbar-expand-sm navbar-light bg-light`
             : `navbar navbar-expand-sm navbar-dark bg-dark`
         }
-        // className="navbar navbar-expand-sm navbar-light bg-light"
         aria-label="Third navbar example"
       >
         <div className="container">
@@ -74,7 +73,7 @@ const Navbar = () => {
                  Lembre-se de usar um estado no contexto para fazer essa alteração.
                  Na linha seguinte deverá ser feito um teste se a aplicação
                  está em dark mode e deverá utilizar o icone ☀ ou 🌙 e btn-dark ou btn-light*/}
-                 {/* TODO guardar o tema mesmo quando muda de página */}
+                {/* TODO guardar o tema mesmo quando muda de página */}
                 <button
                   className={
                     theme === "light"
@@ -83,7 +82,11 @@ const Navbar = () => {
                   }
                   onClick={handleTheme}
                 >
-                  {theme === "light" ? <img src="/images/moon.png" style={{width: "20px"}}/> : <img src="/images/sun.png" style={{width: "20px"}}/>}
+                  {theme === "light" ? (
+                    <img src="/images/moon.png" style={{ width: "20px" }} />
+                  ) : (
+                    <img src="/images/sun.png" style={{ width: "20px" }} />
+                  )}
                 </button>
               </li>
             </ul>
