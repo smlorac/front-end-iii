@@ -2,9 +2,21 @@ import styles from "./Navbar.module.css";
 import { useContext } from "react";
 
 import { ThemeContext } from "../Providers/ThemeProvider";
+import { AuthContext } from "../Providers/AuthContext";
+
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   const { theme, handleTheme } = useContext(ThemeContext);
+
+  const { isLogged, removeUserData } = useContext(AuthContext);
+
+  const logout = () => {
+    removeUserData();
+    navigate("/login");
+  };
 
   return (
     <header className="sticky-top">
@@ -47,16 +59,26 @@ const Navbar = () => {
                 </a>
               </li>
               <li className={`nav-item ${styles.navBarLink}`}>
-                {/* TODO botão de logout que limpe o localstorage */}
                 {/* Se o usuário estiver logado, deverá aparecer um botão de logout
                 que vai apagar o token do localstorage.
                 Se o usuário estiver deslogado, um link fará um redirecionamento, com react-router,
                 ao formulário de login
                 O botão de logout deverá ser testado darkmode
                 se sim, btn-dark, se não, btn-light */}
-                <a className="nav-link" href="/login">
-                  Login
-                </a>
+                {!isLogged ? (
+                  <a className="nav-link" href="/login">
+                    Login
+                  </a>
+                ) : (
+                  <button
+                    className={
+                      theme === "light" ? "btn btn-light" : "btn btn-dark"
+                    }
+                    onClick={logout}
+                  >
+                    Logout
+                  </button>
+                )}
               </li>
               <li className={`nav-item ${styles.navBarLink}`}>
                 <a className="nav-link" href="/destacados">

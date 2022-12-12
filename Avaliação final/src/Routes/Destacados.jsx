@@ -12,6 +12,7 @@ const Destacados = () => {
     const data = localStorage.getItem("favorites");
     setLocalFavs(JSON.parse(data));
   }, []);
+  // BUG só salva mais de um favorito quando dá refresh na página
 
   return (
     <>

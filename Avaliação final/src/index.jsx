@@ -10,17 +10,21 @@ import AppRoutes from "./Routes";
 import AuthProvider from "./Providers/AuthContext";
 import ThemeProvider from "./Providers/ThemeProvider";
 
+import { BrowserRouter } from "react-router-dom";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 //Lembre-se de configurar suas rotas e seu contexto aqui
 root.render(
   <React.StrictMode>
-    <ThemeProvider>
-      <AuthProvider>
-        <Navbar />
-        <AppRoutes />
-        <Footer />
-      </AuthProvider>
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider>
+        <AuthProvider>
+          <Navbar />
+          <AppRoutes />
+          <Footer />
+        </AuthProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );

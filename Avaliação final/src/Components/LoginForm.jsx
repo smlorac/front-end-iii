@@ -7,8 +7,6 @@ import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthContext";
 import { ThemeContext } from "../Providers/ThemeProvider";
 
-// TODO adicionar validações (2)
-// TODO tornar essa a página inicial
 const LoginForm = () => {
   const navigate = useNavigate();
 
@@ -32,6 +30,8 @@ const LoginForm = () => {
   };
 
   async function auth() {
+    validateLogin();
+
     try {
       const res = await api.post("/auth", {
         username,
@@ -45,8 +45,20 @@ const LoginForm = () => {
       });
     } catch (e) {
       console.log("erro de autenticação");
+      alert("erro ao fazer login, verifique suas informações");
+      // TODO deixar mais bonito os alertas
     }
   }
+
+  const validateLogin = () => {
+    if (username.includes(" ")) {
+      alert("o nome de usuário não deve conter espaços");
+    }
+
+    if (username.length < 5 || username.length > 15) {
+      alert("o nome de usuário deve ter entre 5 e 15 letras");
+    }
+  };
 
   return (
     <>

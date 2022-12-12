@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { ThemeContext } from "../Providers/ThemeProvider";
 import styles from "./Card.css";
 
-// TODO criar modo de lidar com os favoritos
 const Card = (props) => {
   const { dentista } = props;
 

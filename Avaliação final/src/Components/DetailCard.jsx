@@ -8,8 +8,7 @@ import api from "../Services/api";
 import { ThemeContext } from "../Providers/ThemeProvider";
 
 const DetailCard = () => {
-
-  const {theme} = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   const { matricula } = useParams();
   const [dentista, setDentista] = useState({});
@@ -35,9 +34,7 @@ const DetailCard = () => {
       console.log("erro ao buscar dentista");
     }
   }
-
-  // TODO tratamento para quando não encontra dentista
-
+  
   return (
     //As instruções que estão com {''} precisam ser
     //substituídas com as informações que vem da api
@@ -48,7 +45,9 @@ const DetailCard = () => {
       <section className="card col-sm-12 col-lg-6 container">
         {/* //Na linha seguinte deverá ser feito um teste se a aplicação
         // está em dark mode e deverá utilizar o css correto */}
-        <div className={theme === "light" ? `card-body row` : `card-body dark row`}>
+        <div
+          className={theme === "light" ? `card-body row` : `card-body dark row`}
+        >
           <div className="col-sm-12 col-lg-6">
             <img
               className="card-img-top"
@@ -72,7 +71,11 @@ const DetailCard = () => {
               <button
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
-                className={theme === "light" ? `btn btn-light ${styles.button}` : `btn btn-dark ${styles.button}`}
+                className={
+                  theme === "light"
+                    ? `btn btn-light ${styles.button}`
+                    : `btn btn-dark ${styles.button}`
+                }
               >
                 Marcar consulta
               </button>
