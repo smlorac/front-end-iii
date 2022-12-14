@@ -12,7 +12,7 @@ const AppRoutes = () => {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <div id="appRoutes" className={theme === "light" ? `light` : `dark`}>
+    <div id="appRoutes" className={theme === "light" ? `light` : `dark`} data-testid="routes">
       <Routes>
         <Route exact path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />

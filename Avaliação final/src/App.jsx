@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-      <div data-testid="app">
+      <div>
         <Navbar />
         <main>
           <Outlet />
