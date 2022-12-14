@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import { ThemeContext } from "./providers/ThemeProvider";
+import "./index.css";
 
 function App() {
   const { theme } = useContext(ThemeContext);
