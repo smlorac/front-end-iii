@@ -1,5 +1,9 @@
+// import Swal from "sweetalert2";
+// import withReactContent from "sweetalert2-react-content";
+
 import { useState } from "react";
 import api from "../Services/api";
+import alert from "../Services/alert";
 import styles from "./Form.css";
 
 import { useNavigate } from "react-router-dom";
@@ -17,6 +21,8 @@ const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const [error, setError] = useState(false);
+
   const handleSubmit = (e) => {
     //Nesse handlesubmit você deverá usar o preventDefault,
     e.preventDefault();
@@ -28,6 +34,8 @@ const LoginForm = () => {
     //Lembre-se de usar um alerta para dizer se foi bem sucedido ou ocorreu um erro
     auth();
   };
+
+  // const MySwal = withReactContent(Swal);
 
   async function auth() {
     validateLogin();
@@ -43,20 +51,35 @@ const LoginForm = () => {
       fillUserData({
         token: res.data.token,
       });
+
+      setError(false);
     } catch (e) {
       console.log("erro de autenticação");
-      alert("erro ao fazer login, verifique suas informações");
-      // TODO deixar mais bonito os alertas
+      //alert("erro ao fazer login, verifique suas informações");
+      if (error) {
+        alert.fire({
+          icon: "error",
+          title: "Erro ao fazer login, verifique suas informações",
+        });
+      }
     }
   }
 
   const validateLogin = () => {
     if (username.includes(" ")) {
-      alert("o nome de usuário não deve conter espaços");
+      // alert("o nome de usuário não deve conter espaços");
+      alert.fire({
+        title: "O nome de usuário não deve conter espaços",
+      });
+      setError(true);
     }
 
     if (username.length < 5 || username.length > 15) {
-      alert("o nome de usuário deve ter entre 5 e 15 letras");
+      // alert("o nome de usuário deve ter entre 5 e 15 letras");
+      alert.fire({
+        title: "O nome de usuário deve ter entre 5 e 15 letras",
+      });
+      setError(true);
     }
   };
 
@@ -90,8 +113,8 @@ const LoginForm = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <button className="btn btn-primary" type="submit">
-              Send
+            <button className="btn btn-danger" type="submit">
+              Entrar
             </button>
           </form>
         </div>

@@ -39,7 +39,6 @@ const Card = (props) => {
           src="/images/doctor.jpg"
           alt="doctor placeholder"
         />
-        {/* FIXME cards estão mto grandes pra página */}
         <div className={`card-body ${styles.CardBody}`}>
           {/* Na linha seguinte o link deverá utilizar a matricula, nome e sobrenome do dentista
           que vem da API */}

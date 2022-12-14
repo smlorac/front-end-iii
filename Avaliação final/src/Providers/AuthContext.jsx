@@ -19,6 +19,7 @@ const AuthProvider = ({ children }) => {
   function removeUserData() {
     localStorage.removeItem("@authDentista");
     localStorage.removeItem("favorites");
+    localStorage.removeItem("@theme");
     setIsLogged(false);
   }
 

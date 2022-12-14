@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useState } from "react";
 
+import alert from "../Services/alert";
 import styles from "../Components/Form.css";
 
 import { ThemeContext } from "../Providers/ThemeProvider";
@@ -18,13 +19,20 @@ const Contato = () => {
     e.preventDefault();
 
     if (form.nomeCompleto.length < 5) {
-      alert("O nome deve conter mais que 5 letras");
-      // TODO criar template para validações
+      // alert("O nome deve conter mais que 5 letras");
+      alert.fire({
+        icon: "info",
+        text: "O nome deve conter mais que 5 letras",
+      });
     } else {
-      alert(
-        `Obrigada, ${form.nomeCompleto}, entraremos em contato assim que possível via email`
-      );
-      // TODO utilizar template de validação
+      // alert(
+      //   `Obrigada, ${form.nomeCompleto}, entraremos em contato assim que possível via email`
+      // );
+      alert.fire({
+        icon: "success",
+        text: `Obrigada, ${form.nomeCompleto}, logo entraremos em contato por email`,
+      });
+
       cleanForm();
     }
   }
@@ -45,8 +53,8 @@ const Contato = () => {
       >
         <div className={`card-body ${styles.CardBody}`}>
           <form onSubmit={handleSubmit}>
-            <div class="form-group">
-              <label for="nomeCompleto">Nome completo</label>
+            <div className="form-group">
+              <label htmlFor="nomeCompleto">Nome completo</label>
               <input
                 className={`form-control ${styles.inputSpacing}`}
                 type="text"
@@ -59,8 +67,8 @@ const Contato = () => {
                 required
               />
             </div>
-            <div class="form-group">
-              <label for="email">Email</label>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
               <input
                 className={`form-control ${styles.inputSpacing}`}
                 type="email"
@@ -68,26 +76,26 @@ const Contato = () => {
                 id="email"
                 aria-describedby="emailHelp"
                 placeholder="Digite seu email"
-                value={form.email}
+                defaultValue={form.email}
                 required
               />
               <small id="emailHelp" class="form-text text-muted">
                 Não se preocupe, não compartilharemos seu email com ninguém.
               </small>
             </div>
-            <div class="form-group">
-              <label for="assunto">Assunto</label>
+            <div className="form-group">
+              <label htmlFor="assunto">Assunto</label>
               <textarea
                 className={`form-control ${styles.inputSpacing}`}
                 class="form-control"
                 id="assunto"
                 rows="3"
                 placeholder="Descreva o assunto de seu interesse"
-                value={form.assunto}
+                defaultValue={form.assunto}
                 required
               ></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" className="btn btn-danger">
               Enviar
             </button>
           </form>

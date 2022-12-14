@@ -4,6 +4,7 @@ import styles from "./ScheduleForm.module.css";
 
 import { AuthContext } from "../Providers/AuthContext";
 import { ThemeContext } from "../Providers/ThemeProvider";
+import alert from "../Services/alert";
 
 const ScheduleForm = () => {
   const { userData } = useContext(AuthContext);
@@ -85,10 +86,17 @@ const ScheduleForm = () => {
         },
       });
 
-      // TODO deixar mais bonitinho
-      alert("consulta agendada!");
+      // alert("consulta agendada!");
+      alert.fire({
+        icon: "success",
+        title: "Sua consulta foi agendada",
+      });
     } catch (e) {
-      alert("erro ao agendar a consulta");
+      // alert("erro ao agendar a consulta");
+      alert.fire({
+        icon: "error",
+        title: "Ocorreu um erro ao agendar sua consulta, tente novamente",
+      });
     }
   }
 
@@ -96,7 +104,13 @@ const ScheduleForm = () => {
     <>
       {/* //Na linha seguinte deverá ser feito um teste se a aplicação
         // está em dark mode e deverá utilizar o css correto */}
-      <div className={theme === "light" ? `text-center container` : `text-center container dark`}>
+      <div
+        className={
+          theme === "light"
+            ? `text-center container`
+            : `text-center container dark`
+        }
+      >
         <form onSubmit={handleSubmit}>
           <div className={`row ${styles.rowSpacing}`}>
             <div className="col-sm-12 col-lg-6">
@@ -162,8 +176,15 @@ const ScheduleForm = () => {
           <div className={`row ${styles.rowSpacing}`}>
             {/* //Na linha seguinte deverá ser feito um teste se a aplicação
         // está em dark mode e deverá utilizar o css correto */}
-            <button className={theme === "light" ? `btn btn-light ${styles.button}` : `btn btn-dark ${styles.button}`} type="submit">
-              Schedule
+            <button
+              className={
+                theme === "light"
+                  ? `btn btn-light ${styles.button}`
+                  : `btn btn-dark ${styles.button}`
+              }
+              type="submit"
+            >
+              Marcar consulta
             </button>
           </div>
         </form>
