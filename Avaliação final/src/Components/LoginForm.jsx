@@ -1,15 +1,12 @@
-// import Swal from "sweetalert2";
-// import withReactContent from "sweetalert2-react-content";
-
 import { useState } from "react";
-import api from "../Services/api";
-import alert from "../Services/alert";
+import api from "../services/api";
+import alert from "../services/alert";
 import styles from "./Form.css";
 
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../Providers/AuthContext";
-import { ThemeContext } from "../Providers/ThemeProvider";
+import { AuthContext } from "../providers/AuthContext";
+import { ThemeContext } from "../providers/ThemeProvider";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -93,6 +90,7 @@ const LoginForm = () => {
             ? `text-center card container ${styles.card}`
             : `text-center card dark container ${styles.card}`
         }
+        data-testid="login"
       >
         <div className={`card-body ${styles.CardBody}`}>
           <form onSubmit={handleSubmit}>

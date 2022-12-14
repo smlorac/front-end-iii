@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useContext } from "react";
-import { ThemeContext } from "../Providers/ThemeProvider";
+import { ThemeContext } from "../providers/ThemeProvider";
 import styles from "./Card.css";
 
 const Card = (props) => {
@@ -33,7 +33,7 @@ const Card = (props) => {
     <>
       {/* //Na linha seguinte deverá ser feito um teste se a aplicação
         // está em dark mode e deverá utilizar o css correto */}
-      <div className={theme === "light" ? `card` : `card dark`}>
+      <div className={theme === "light" ? `card` : `card dark`} data-testid="card">
         <img
           className="card-img-top"
           src="/images/doctor.jpg"

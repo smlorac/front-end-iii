@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import api from "../Services/api";
+import api from "../services/api";
 import styles from "./ScheduleForm.module.css";
 
-import { AuthContext } from "../Providers/AuthContext";
-import { ThemeContext } from "../Providers/ThemeProvider";
-import alert from "../Services/alert";
+import { AuthContext } from "../providers/AuthContext";
+import { ThemeContext } from "../providers/ThemeProvider";
+import alert from "../services/alert";
 
 const ScheduleForm = () => {
   const { userData } = useContext(AuthContext);

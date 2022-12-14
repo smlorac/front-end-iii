@@ -2,10 +2,10 @@ import { useEffect, useState, useContext } from "react";
 import ScheduleFormModal from "./ScheduleFormModal";
 import styles from "./DetailCard.module.css";
 import { useParams } from "react-router-dom";
-import { AuthContext } from "../Providers/AuthContext";
+import { AuthContext } from "../providers/AuthContext";
 
-import api from "../Services/api";
-import { ThemeContext } from "../Providers/ThemeProvider";
+import api from "../services/api";
+import { ThemeContext } from "../providers/ThemeProvider";
 
 const DetailCard = () => {
   const { theme } = useContext(ThemeContext);
@@ -34,7 +34,7 @@ const DetailCard = () => {
       console.log("erro ao buscar dentista");
     }
   }
-  
+
   return (
     //As instruções que estão com {''} precisam ser
     //substituídas com as informações que vem da api
@@ -47,6 +47,7 @@ const DetailCard = () => {
         // está em dark mode e deverá utilizar o css correto */}
         <div
           className={theme === "light" ? `card-body row` : `card-body dark row`}
+          data-testid="detailCardDiv"
         >
           <div className="col-sm-12 col-lg-6">
             <img
@@ -76,6 +77,7 @@ const DetailCard = () => {
                     ? `btn btn-light ${styles.button}`
                     : `btn btn-dark ${styles.button}`
                 }
+                data-testid="detailCardButton"
               >
                 Marcar consulta
               </button>

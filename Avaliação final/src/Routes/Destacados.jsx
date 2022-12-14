@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 
-import styles from "../Components/Card.css";
-import { ThemeContext } from "../Providers/ThemeProvider";
+import styles from "../components/Card.css";
+import { ThemeContext } from "../providers/ThemeProvider";
 
 const Destacados = () => {
   const { theme } = useContext(ThemeContext);

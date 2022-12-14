@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styles from "./Footer.module.css";
 
-import { ThemeContext } from "../Providers/ThemeProvider";
+import { ThemeContext } from "../providers/ThemeProvider";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -27,6 +27,7 @@ const Footer = () => {
               ? `navbar-light bg-light ${styles.footer}`
               : `navbar-dark bg-dark ${styles.footer}`
           }
+          data-testid="footerDiv"
         >
           <div className="container">
             <div className={`row`}>
@@ -37,6 +38,7 @@ const Footer = () => {
                   className={theme === "light" ? `${styles.dhLogo}` : `dark ${styles.dhLogo}`}
                   src="/images/DH.png"
                   alt="DH-logo"
+                  data-testid="footerImg"
                 />
               </div>
               <div className={theme === "light" ? `col-sm-12 col-lg-6 ${styles.icons}` : `col-sm-12 col-lg-6 dark ${styles.icons}`}>
