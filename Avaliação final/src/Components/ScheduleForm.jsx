@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import api from "../services/api";
 import styles from "./ScheduleForm.module.css";
-
 import { AuthContext } from "../providers/AuthContext";
 import { ThemeContext } from "../providers/ThemeProvider";
 import alert from "../services/alert";
@@ -20,19 +19,13 @@ const ScheduleForm = () => {
   const [pacienteForm, setPacienteForm] = useState("");
 
   useEffect(() => {
-    //Nesse useEffect, você vai fazer um fetch na api buscando TODOS os dentistas
-    //e pacientes e carregar os dados em 2 estados diferentes
     getDentistas();
     getPacientes();
   }, []);
 
   const handleSubmit = (event) => {
-    //Nesse handlesubmit você deverá usar o preventDefault,
     event.preventDefault();
-    //obter os dados do formulário e enviá-los no corpo da requisição
-    //para a rota da api que marca a consulta
-    //lembre-se que essa rota precisa de um Bearer Token para funcionar.
-    //Lembre-se de usar um alerta para dizer se foi bem sucedido ou ocorreu um erro
+
     postConsulta();
   };
 
@@ -86,13 +79,11 @@ const ScheduleForm = () => {
         },
       });
 
-      // alert("consulta agendada!");
       alert.fire({
         icon: "success",
         title: "Sua consulta foi agendada",
       });
     } catch (e) {
-      // alert("erro ao agendar a consulta");
       alert.fire({
         icon: "error",
         title: "Ocorreu um erro ao agendar sua consulta, tente novamente",
@@ -102,8 +93,6 @@ const ScheduleForm = () => {
 
   return (
     <>
-      {/* //Na linha seguinte deverá ser feito um teste se a aplicação
-        // está em dark mode e deverá utilizar o css correto */}
       <div
         className={
           theme === "light"
@@ -127,7 +116,6 @@ const ScheduleForm = () => {
                 <option value="none" selected>
                   -
                 </option>
-                {/*Aqui deve ser feito um map para listar todos os dentistas*/}
                 {dentistas.map((dentista) => (
                   <option key={dentista.matricula} value={dentista.matricula}>
                     {`${dentista.nome} ${dentista.sobrenome}`}
@@ -149,7 +137,6 @@ const ScheduleForm = () => {
                 <option value="none" selected>
                   -
                 </option>
-                {/*Aqui deve ser feito um map para listar todos os pacientes*/}
                 {pacientes.map((paciente) => (
                   <option key={paciente.matricula} value={paciente.matricula}>
                     {`${paciente.nome} ${paciente.sobrenome}`}
@@ -174,8 +161,6 @@ const ScheduleForm = () => {
             </div>
           </div>
           <div className={`row ${styles.rowSpacing}`}>
-            {/* //Na linha seguinte deverá ser feito um teste se a aplicação
-        // está em dark mode e deverá utilizar o css correto */}
             <button
               className={
                 theme === "light"

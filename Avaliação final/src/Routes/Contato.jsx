@@ -1,9 +1,6 @@
-import { useContext } from "react";
-import { useState } from "react";
-
+import { useContext, useState } from "react";
 import alert from "../services/alert";
 import styles from "../components/Form.css";
-
 import { ThemeContext } from "../providers/ThemeProvider";
 
 const Contato = () => {
@@ -19,15 +16,11 @@ const Contato = () => {
     e.preventDefault();
 
     if (form.nomeCompleto.length < 5) {
-      // alert("O nome deve conter mais que 5 letras");
       alert.fire({
         icon: "info",
         text: "O nome deve conter mais que 5 letras",
       });
     } else {
-      // alert(
-      //   `Obrigada, ${form.nomeCompleto}, entraremos em contato assim que possível via email`
-      // );
       alert.fire({
         icon: "success",
         text: `Obrigada, ${form.nomeCompleto}, logo entraremos em contato por email`,

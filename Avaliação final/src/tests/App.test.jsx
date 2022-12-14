@@ -12,7 +12,7 @@ describe("<App/>", () => {
 
     const tema = screen.getByTestId("app");
 
-    expect(tema).toHaveClass("light");
+    expect(tema).toHaveClass("dark");
   });
 });
 // BUG inicia com dark

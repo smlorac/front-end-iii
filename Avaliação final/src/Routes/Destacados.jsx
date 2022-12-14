@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-
 import styles from "../components/Card.css";
 import { ThemeContext } from "../providers/ThemeProvider";
 

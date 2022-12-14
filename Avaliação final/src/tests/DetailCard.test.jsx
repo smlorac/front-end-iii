@@ -1,7 +1,7 @@
 import mockAxios from "jest-mock-axios";
 
 import { render, screen } from "@testing-library/react";
-import { BrowserRouter, useRouteLoaderData } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import DetailCard from "../components/DetailCard";
 import AuthProvider from "../providers/AuthContext";
 

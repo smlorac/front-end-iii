@@ -27,5 +27,16 @@ describe("<Card/>", () => {
     expect(tema).toHaveStyle({ backgroundColor: 31313196 });
   });
 
-  // TODO testar se o card está renderizando
+  test("Valida se o card está renderizando", () => {
+    render(
+      <BrowserRouter>
+        <Card dentista={dentista} key={dentista.matricula} />
+      </BrowserRouter>
+    );
+
+    const nome = screen.getByRole("heading", { level: 5 });
+
+    expect(nome).toBeInTheDocument();
+    expect(nome.textContent).toBe("Admin Admin");
+  });
 });

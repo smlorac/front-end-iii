@@ -5,7 +5,6 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import "./index.css";
-
 import AppRoutes from "./Routes";
 import AuthProvider from "./providers/AuthContext";
 import ThemeProvider from "./providers/ThemeProvider";
@@ -14,7 +13,6 @@ import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-//Lembre-se de configurar suas rotas e seu contexto aqui
 root.render(
   <React.StrictMode>
     <BrowserRouter>

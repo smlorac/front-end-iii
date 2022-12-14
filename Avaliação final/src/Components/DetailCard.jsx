@@ -3,9 +3,8 @@ import ScheduleFormModal from "./ScheduleFormModal";
 import styles from "./DetailCard.module.css";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../providers/AuthContext";
-
-import api from "../services/api";
 import { ThemeContext } from "../providers/ThemeProvider";
+import api from "../services/api";
 
 const DetailCard = () => {
   const { theme } = useContext(ThemeContext);
@@ -17,8 +16,6 @@ const DetailCard = () => {
   const { token } = userData;
 
   useEffect(() => {
-    //Nesse useEffect, você vai fazer um fetch na api passando o
-    //id do dentista que está vindo do react-router e carregar os dados em algum estado
     getDentista();
   }, []);
 
@@ -36,15 +33,11 @@ const DetailCard = () => {
   }
 
   return (
-    //As instruções que estão com {''} precisam ser
-    //substituídas com as informações que vem da api
     <>
       <h1>
         Informação sobre {dentista.nome} {dentista.sobrenome}{" "}
       </h1>
       <section className="card col-sm-12 col-lg-6 container">
-        {/* //Na linha seguinte deverá ser feito um teste se a aplicação
-        // está em dark mode e deverá utilizar o css correto */}
         <div
           className={theme === "light" ? `card-body row` : `card-body dark row`}
           data-testid="detailCardDiv"
@@ -67,8 +60,6 @@ const DetailCard = () => {
               </li>
             </ul>
             <div className="text-center">
-              {/* //Na linha seguinte deverá ser feito um teste se a aplicação
-              // está em dark mode e deverá utilizado o css correto */}
               <button
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
