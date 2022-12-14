@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import Navbar from "../Components/Navbar";
 
 describe("<Navbar/>", () => {
   test("Valida se o tema muda após clicar no botão", () => {

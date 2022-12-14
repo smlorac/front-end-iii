@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ThemeContext } from "../providers/ThemeProvider";
+import { ThemeContext } from "../Providers/ThemeProvider";
 import ScheduleForm from "./ScheduleForm";
 
 const ScheduleFormModal = () => {

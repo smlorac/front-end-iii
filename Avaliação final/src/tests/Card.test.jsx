@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import Card from "../components/Card";
+import Card from "../Components/Card";
 
 describe("<Card/>", () => {
   const dentista = {

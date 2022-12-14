@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
-import Card from "../components/Card";
-import { AuthContext } from "../providers/AuthContext";
-import api from "../services/api";
+import Card from "../Components/Card";
+import { AuthContext } from "../Providers/AuthContext";
+import api from "../Services/api";
 
 const Home = () => {
   const [dentistas, setDentistas] = useState([]);

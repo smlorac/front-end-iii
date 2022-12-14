@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { ThemeContext } from "../providers/ThemeProvider";
+import { ThemeContext } from "../Providers/ThemeProvider";
 import styles from "./Card.css";
 
 const Card = (props) => {

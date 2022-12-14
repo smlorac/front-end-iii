@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./routes/Home";
-import Login from "./routes/Login";
-import Detail from "./routes/Detail";
-import Contato from "./routes/Contato";
-import Destacados from "./routes/Destacados";
-import NotFound from "./routes/NotFound";
+import Home from "./Routes/Home";
+import Login from "./Routes/Login";
+import Detail from "./Routes/Detail";
+import Contato from "./Routes/Contato";
+import Destacados from "./Routes/Destacados";
+import NotFound from "./Routes/NotFound";
 
 const AppRoutes = () => {
   return (

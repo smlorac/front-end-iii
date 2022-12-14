@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styles from "./Footer.module.css";
 
-import { ThemeContext } from "../providers/ThemeProvider";
+import { ThemeContext } from "../Providers/ThemeProvider";
 
 const Footer = () => {
   const scrollToTop = () => {

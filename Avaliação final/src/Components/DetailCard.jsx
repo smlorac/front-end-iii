@@ -2,9 +2,9 @@ import { useEffect, useState, useContext } from "react";
 import ScheduleFormModal from "./ScheduleFormModal";
 import styles from "./DetailCard.module.css";
 import { useParams } from "react-router-dom";
-import { AuthContext } from "../providers/AuthContext";
-import { ThemeContext } from "../providers/ThemeProvider";
-import api from "../services/api";
+import { AuthContext } from "../Providers/AuthContext";
+import { ThemeContext } from "../Providers/ThemeProvider";
+import api from "../Services/api";
 
 const DetailCard = () => {
   const { theme } = useContext(ThemeContext);

@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
-import alert from "../services/alert";
-import styles from "../components/Form.css";
-import { ThemeContext } from "../providers/ThemeProvider";
+import alert from "../Services/alert";
+import styles from "../Components/Form.css";
+import { ThemeContext } from "../Providers/ThemeProvider";
 
 const Contato = () => {
   const { theme } = useContext(ThemeContext);
