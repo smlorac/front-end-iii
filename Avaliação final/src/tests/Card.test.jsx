@@ -21,8 +21,6 @@ describe("<Card/>", () => {
 
     const tema = screen.getByTestId("card");
 
-    // TODO usar botão caso corrija pro default light
-
     expect(tema).toHaveClass("dark");
     expect(tema).toHaveStyle({ backgroundColor: 31313196 });
   });

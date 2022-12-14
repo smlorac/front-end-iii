@@ -25,6 +25,7 @@ const Navbar = () => {
             : `navbar navbar-expand-sm navbar-dark bg-dark`
         }
         aria-label="Third navbar example"
+        data-testid="nav"
       >
         <div className="container">
           <a className={`navbar-brand ${styles.navbarBrand}`} href="/home">
@@ -86,6 +87,7 @@ const Navbar = () => {
                       : `btn btn-dark ${styles.btnStyle}`
                   }
                   onClick={handleTheme}
+                  data-testid="btn-theme"
                 >
                   {theme === "light" ? (
                     <img src="/images/moon.png" style={{ width: "20px" }} />

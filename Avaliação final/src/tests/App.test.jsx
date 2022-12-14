@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "../App";
 
 describe("<App/>", () => {
-  test("Valida se o tema inicial é o light", () => {
+  test("Valida se o tema inicial é o dark", () => {
     render(
       <BrowserRouter>
         <App />
@@ -15,4 +15,3 @@ describe("<App/>", () => {
     expect(tema).toHaveClass("dark");
   });
 });
-// BUG inicia com dark
